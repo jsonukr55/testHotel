@@ -48,8 +48,8 @@ class Account(AbstractBaseUser):
 	is_superuser			= models.BooleanField(default=False)
 	first_name				= models.CharField(verbose_name="first_name",max_length=60,unique=False)
 	last_name				= models.CharField(verbose_name="last_name",max_length=60,unique=False)
-	ACCOUNT_CATEGORY 		= (('hotel','Hotel'),('customer','Customer'))
-	account_type			= models.CharField(verbose_name="account_type", choices=ACCOUNT_CATEGORY,max_length=10,default="user")
+	ACCOUNT_CATEGORY 		= (('hotel','Hotel'),('customer','Customer'),("--select--","--Select--"))
+	account_type			= models.CharField(verbose_name="account_type", choices=ACCOUNT_CATEGORY,max_length=1,default="--select--")
 
 
 
