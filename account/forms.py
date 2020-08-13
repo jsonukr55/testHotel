@@ -13,7 +13,7 @@ class RegistrationForm(UserCreationForm):
 
 	class Meta:
 		model = Account
-		fields = ("email", "username","first_name","last_name", "password1", "password2")
+		fields = ("email", "username","first_name","last_name", "password1", "password2","account_type")
 
 
 
@@ -24,7 +24,7 @@ class AccountAuthenticationForm(forms.ModelForm):
 
 	class Meta:
 		model = Account
-		fields = ('email', 'password')
+		fields = ('email', 'password','account_type')
 
 	def clean(self):
 		if self.is_valid():

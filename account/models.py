@@ -35,6 +35,8 @@ class MyAccountManager(BaseUserManager):
 		return user
 
 
+
+
 class Account(AbstractBaseUser):
 	email 					= models.EmailField(verbose_name="email", max_length=60, unique=True)
 	username 				= models.CharField(max_length=30, unique=True)
@@ -46,11 +48,14 @@ class Account(AbstractBaseUser):
 	is_superuser			= models.BooleanField(default=False)
 	first_name				= models.CharField(verbose_name="first_name",max_length=60,unique=False)
 	last_name				= models.CharField(verbose_name="last_name",max_length=60,unique=False)
-	
+	ACCOUNT_CATEGORY 		= (('hotel','Hotel'),('customer','Customer'))
+	account_type			= models.CharField(verbose_name="account_type", choices=ACCOUNT_CATEGORY,max_length=10,default="user")
+
+
 
 
 	USERNAME_FIELD = 'email'
-	REQUIRED_FIELDS = ['username','first_name','last_name']
+	REQUIRED_FIELDS = ['username','first_name','last_name','account_type']
 
 	objects = MyAccountManager()
 
